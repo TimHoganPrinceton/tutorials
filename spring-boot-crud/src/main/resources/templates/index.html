@@ -10,6 +10,7 @@
         <link rel="stylesheet" href="../css/shards.min.css">
     </head>
     <body>
+
         <div th:switch="${users}" class="container my-5">
             <div class="row">
                 <div class="col-md-6">
@@ -34,6 +35,8 @@
                                 </tr>
                             </tbody>
                         </table>
+                        <span th:text="'ipAddress=' + ${podInfo.ipAddress}">Host name: </span><br/>
+                        <span th:text="'hostname=' +${podInfo.hostName}">IP Address</span><br/>
                     </div>      
                     <p class="my-5"><a href="/signup" class="btn btn-primary"><i class="fas fa-user-plus ml-2"></i></a></p>
                 </div>
