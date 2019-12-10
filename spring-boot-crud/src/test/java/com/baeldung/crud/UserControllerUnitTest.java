@@ -32,7 +32,7 @@ public class UserControllerUnitTest {
     public void whenCalledshowSignUpForm_thenCorrect() {
         User user = new User("John", "john@domain.com");
 
-        assertThat(userController.showSignUpForm(user)).isEqualTo("add-user");
+        assertThat(userController.showSignUpForm(user, mockedModel)).isEqualTo("add-user");
     }
     
     @Test

@@ -11,13 +11,14 @@
     </head>
     <body>
 
-        <div th:switch="${users}" class="container my-5">
+        <div class="container my-5">
             <div class="row">
                 <div class="col-md-6">
-                    <h2 th:case="null">No users yet!</h2>
-                    <div th:case="*">
-                        <h2 class="my-5">Users</h2>
-                        <table class="table table-striped table-responsive-md">
+                    <h2 th:if="${users.empty}">No users yet!</h2>
+                    <div>
+
+                        <h2 th:if="${not users.empty}" class="my-5">Users</h2>
+                        <table th:if="${not users.empty}" class="table table-striped table-responsive-md">
                             <thead>
                                 <tr>
                                     <th>Name</th>
@@ -35,6 +36,8 @@
                                 </tr>
                             </tbody>
                         </table>
+
+
                         <span th:text="'ipAddress=' + ${podInfo.ipAddress}">Host name: </span><br/>
                         <span th:text="'hostname=' +${podInfo.hostName}">IP Address</span><br/>
                     </div>      
