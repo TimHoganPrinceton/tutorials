@@ -40,6 +40,7 @@ public class UserController {
     
     @GetMapping("/signup")
     public String showSignUpForm(User user, Model model) {
+        log.info("navigating to add-user");
         updateModel(model);
         return "add-user";
     }
@@ -47,11 +48,13 @@ public class UserController {
     @PostMapping("/adduser")
     public String addUser(@Valid User user, BindingResult result, Model model) {
         if (result.hasErrors()) {
+            log.info("failed validation adding a user name={}, email={}", user.getName(), user.getEmail());
             updateModel(model);
             return "add-user";
         }
         
         userRepository.save(user);
+        log.info("added user name={} email={}", user.getName(), user.getEmail());
         updateModel(model);
         return "index";
     }
@@ -61,6 +64,7 @@ public class UserController {
         User user = userRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
         model.addAttribute("user", user);
         updateModel(model);
+        log.info("navigating to update user id={}", id);
         return "update-user";
     }
     
@@ -69,9 +73,10 @@ public class UserController {
         if (result.hasErrors()) {
             user.setId(id);
             updateModel(model);
+            log.info("failed validation updating a user name={}, email={}", user.getName(), user.getEmail());
             return "update-user";
         }
-        
+        log.info("updated a user name={}, email={}", user.getName(), user.getEmail());
         userRepository.save(user);
         updateModel(model);
         return "index";
@@ -82,6 +87,7 @@ public class UserController {
         User user = userRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
         userRepository.delete(user);
         updateModel(model);
+        log.info("deleting user id={}", id);
         return "index";
     }
 }
