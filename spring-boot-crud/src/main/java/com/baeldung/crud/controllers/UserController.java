@@ -36,9 +36,9 @@ public class UserController {
     }
 
     @GetMapping("/killme")
-    public String killme() {
-        log.error("System Crash!");
-        this.shutdownService.shutdownApplication(1);
+    public String killme(Model model) {
+        this.shutdownService.shutdownApplication();
+        updateModel(model);
         return "index";
     }
 

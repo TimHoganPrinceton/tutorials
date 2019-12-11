@@ -41,7 +41,10 @@
                         <span th:text="'ipAddress=' + ${podInfo.ipAddress}">Host name: </span><br/>
                         <span th:text="'hostname=' +${podInfo.hostName}">IP Address</span><br/>
                     </div>      
-                    <p class="my-5"><a href="/signup" class="btn btn-primary"><i class="fas fa-user-plus ml-2"></i></a></p>
+                    <p class="my-5">
+                        <a href="/signup" class="btn btn-primary"><i class="fas fa-user-plus ml-2"></i></a>
+                        <a href="/killme" class="btn btn-danger" title="kill this pod in 10 seconds"><i class="fas fa-bolt ml-2"></i></a>
+                    </p>
                 </div>
             </div>
         </div>
