@@ -3,6 +3,7 @@ package com.baeldung.crud.controllers;
 import javax.validation.Valid;
 
 import com.baeldung.crud.service.PodInfo;
+import com.baeldung.crud.service.ShutdownService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,6 +23,9 @@ public class UserController {
     private final UserRepository userRepository;
 
     @Autowired
+    ShutdownService shutdownService;
+
+    @Autowired
     public UserController(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
@@ -29,6 +33,13 @@ public class UserController {
     private void updateModel( Model model ) {
         model.addAttribute("users", userRepository.findAll());
         model.addAttribute("podInfo", new PodInfo());
+    }
+
+    @GetMapping("/killme")
+    public String killme() {
+        log.error("System Crash!");
+        this.shutdownService.shutdownApplication(1);
+        return "index";
     }
 
     @GetMapping("/")
