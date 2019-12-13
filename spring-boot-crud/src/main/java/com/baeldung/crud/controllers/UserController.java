@@ -2,6 +2,8 @@ package com.baeldung.crud.controllers;
 
 import javax.validation.Valid;
 
+import com.baeldung.crud.health.HealthException;
+import com.baeldung.crud.health.HealthService;
 import com.baeldung.crud.service.PodInfo;
 import com.baeldung.crud.service.ShutdownService;
 import lombok.extern.slf4j.Slf4j;
@@ -24,6 +26,9 @@ public class UserController {
 
     @Autowired
     ShutdownService shutdownService;
+
+    @Autowired
+    HealthService healthService;
 
     @Autowired
     public UserController(UserRepository userRepository) {
@@ -101,4 +106,5 @@ public class UserController {
         log.info("deleting user id={}", id);
         return "index";
     }
+
 }

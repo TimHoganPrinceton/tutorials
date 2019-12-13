@@ -21,12 +21,16 @@ public class ShutdownService{
         this.timeToDie = true;
     }
 
-    @Scheduled(fixedDelay = 10000)  //poll every 10 seconds to see if we should run a synch
-    private void stopMyself() {
-        if(timeToDie) {
-            int returnCode = -1;
-            log.error("SYSTEM CRASH!!");
-            SpringApplication.exit(appContext, () -> returnCode);
-        }
+    public boolean isDead() {
+        return timeToDie;
     }
+
+//    @Scheduled(fixedDelay = 10000)  //poll every 10 seconds to see if we should run a synch
+//    private void stopMyself() {
+//        if(timeToDie) {
+//            int returnCode = -1;
+//            log.error("SYSTEM CRASH!!");
+//            SpringApplication.exit(appContext, () -> returnCode);
+//        }
+//    }
 }
