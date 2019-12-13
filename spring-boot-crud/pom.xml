@@ -5,7 +5,7 @@
 
     <artifactId>spring-boot-crud</artifactId>
     <name>spring-boot-crud</name>
-    <version>1.5.0-SNAPSHOT</version>
+    <version>1.5.0</version>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -81,7 +81,7 @@
                 <version>1.4.0</version>
                 <configuration>
                     <to>
-                        <image>csicontainerregistry.azurecr.io/demo3:1.4.0</image>
+                        <image>csicontainerregistry.azurecr.io/demo3:1.5.0</image>
                         <auth>
                             <username>csiContainerRegistry</username>
                             <password>Sf4evoQaM/vQSTvcsRAl9TM1uqKaPgdq</password>
