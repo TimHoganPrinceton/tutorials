@@ -5,7 +5,7 @@
 
     <artifactId>spring-boot-crud</artifactId>
     <name>spring-boot-crud</name>
-    <version>1.8.0</version>
+    <version>1.10.0</version>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -64,6 +64,12 @@
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>com.opencsv</groupId>
+            <artifactId>opencsv</artifactId>
+            <version>${opencsv.version}</version>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -81,7 +87,7 @@
                 <version>1.4.0</version>
                 <configuration>
                     <to>
-                        <image>csicontainerregistry.azurecr.io/demo3:1.8.0</image>
+                        <image>csicontainerregistry.azurecr.io/demo3:1.10.0</image>
                         <auth>
                             <username>csiContainerRegistry</username>
                             <password>Sf4evoQaM/vQSTvcsRAl9TM1uqKaPgdq</password>
@@ -97,6 +103,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <lombok.version>1.18.2</lombok.version>
         <flyway.version>6.0.8</flyway.version>
+        <opencsv.version>4.2</opencsv.version>
     </properties>
 
 </project>

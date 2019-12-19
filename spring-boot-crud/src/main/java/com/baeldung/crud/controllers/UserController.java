@@ -2,6 +2,7 @@ package com.baeldung.crud.controllers;
 
 import javax.validation.Valid;
 
+import com.baeldung.crud.export.ExportService;
 import com.baeldung.crud.health.HealthException;
 import com.baeldung.crud.health.HealthService;
 import com.baeldung.crud.service.PodInfo;
@@ -31,6 +32,9 @@ public class UserController {
     HealthService healthService;
 
     @Autowired
+    ExportService exportService;
+
+    @Autowired
     public UserController(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
@@ -43,6 +47,17 @@ public class UserController {
     @GetMapping("/killme")
     public String killme(Model model) {
         this.shutdownService.shutdownApplication();
+        updateModel(model);
+        return "index";
+    }
+
+    @GetMapping("/export")
+    public String exportList(Model model) {
+        try {
+            exportService.exportList();
+        } catch( Exception e ) {
+            log.error("Error exporting list", e);
+        }
         updateModel(model);
         return "index";
     }
